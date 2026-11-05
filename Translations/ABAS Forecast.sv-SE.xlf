@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="sv-SE" original="ABAS Forecast.g.xlf">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 1145636371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Forecast Setup</source>
+          <target>Artikelprognos, inställningar</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1145636371 - Field 4284544769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forecast Parameter</source>
+          <target>Prognosparameter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Forecast Divisor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1145636371 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <target>Primärnyckel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3068141294 - Field 2377754522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Description</source>
+          <target>Artikelbeskrivning</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Base Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3068141294 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <target>Artikelnr</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3068141294 - Field 246085204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity Forecast</source>
+          <target>Prognos kvantitet</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Quantity Forecast - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3068141294 - Field 4024651138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity Last Year</source>
+          <target>Kvantitet föregående år</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Quantity Last Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3068141294 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <target>Variantkod</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Variant Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABAS Item Sales Forecast (LS)</source>
+          <target>ABAS försäljningsprognos artiklar (LS)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 115587394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forecast Parameters</source>
+          <target>Prognosparametrar</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control GeneralConfiguration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 4284544769 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The permanent base value used in calculations: 3 * (Sales Last Year) / parameter.</source>
+          <target>Grundvärde i kalkyl: 3 * (föregående års försäljning) / parameter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Forecast Divisor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 4284544769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forecast parameter</source>
+          <target>Prognosparameter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Forecast Divisor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 285721170 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the description of the base item.</source>
+          <target>Anger artikelbeskrivning</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control BaseItemDescription - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item number.</source>
+          <target>Anger artikelnumret.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 3989161252 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the forecasted unit quantity.</source>
+          <target>Anger prognosticerad kvantitet.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control QuantityForecast - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 1384966386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total quantity sold for this variant last year.</source>
+          <target>Anger total kvantitet såld föregående år.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control QuantityLastYear - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 3798681774 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the variant code.</source>
+          <target>Anger variantkoden.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control VariantCode - Property ToolTip</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
