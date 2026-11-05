@@ -57,6 +57,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2608201074 - NamedType 1738636964" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The parameter must be greater than zero.</source>
+          <target>Parametern måste vara större än noll.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - NamedType ParameterErrorMsg</note>
+        </trans-unit>
         <trans-unit id="Page 2608201074 - Control 115587394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast Parameters</source>
           <target>Prognosparametrar</target>

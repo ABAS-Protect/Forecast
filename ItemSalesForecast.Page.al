@@ -39,7 +39,7 @@ page 50115 "Item Sales Forecast"
                     trigger OnValidate()
                     begin
                         if this.ForecastSetup."Forecast Divisor" <= 0 then
-                            Error('The divisor must be greater than zero.');
+                            Error(this.ParameterErrorMsg);
 
                         this.ForecastSetup.Modify();
 
@@ -102,6 +102,7 @@ page 50115 "Item Sales Forecast"
 
     var
         ForecastSetup: Record "Item Forecast Setup";
+        ParameterErrorMsg: Label 'The parameter must be greater than zero.';
 
     local procedure GetOrCreateSetupRecord()
     begin
