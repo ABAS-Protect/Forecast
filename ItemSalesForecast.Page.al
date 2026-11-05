@@ -146,7 +146,13 @@ page 50115 "Item Sales Forecast"
         if Rec.FindFirst() then;
     end;
 
-    local procedure InsertBufferRow(NewItemNo: Code[20]; NewVariantCode: Code[10]; NewItemDescription: Text[100]; StartDate: Date; EndDate: Date)
+    local procedure InsertBufferRow(
+        NewItemNo: Code[20];
+        NewVariantCode: Code[10];
+        NewItemDescription: Text[100];
+        StartDate: Date;
+        EndDate: Date
+    )
     var
         ValueEntry: Record "Value Entry";
     begin
@@ -164,8 +170,8 @@ page 50115 "Item Sales Forecast"
         if ValueEntry.CalcSums("Invoiced Quantity") then
             Rec."Quantity Last Year" := ValueEntry."Invoiced Quantity" * -1;
 
-        if ForecastSetup."Forecast Divisor" <> 0 then
-            Rec."Quantity Forecast" := (3 * Rec."Quantity Last Year") / ForecastSetup."Forecast Divisor"
+        if this.ForecastSetup."Forecast Divisor" <> 0 then
+            Rec."Quantity Forecast" := (3 * Rec."Quantity Last Year") / this.ForecastSetup."Forecast Divisor"
         else
             Rec."Quantity Forecast" := 0;
 
