@@ -68,6 +68,19 @@ page 50115 "Item Sales Forecast"
                         this.ValidateDatesAndRefresh();
                     end;
                 }
+                field("Hide Zero Sales"; this.ForecastSetup."Hide Zero Sales")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Hide Zero Sales';
+                    ToolTip = 'Specifies whether items and variants with zero sales in the selected period are hidden.';
+
+                    trigger OnValidate()
+                    begin
+                        this.ForecastSetup.Modify();
+                        this.PopulateTemporaryData();
+                        CurrPage.Update(false);
+                    end;
+                }
             }
 
             repeater(Group)
@@ -163,74 +176,101 @@ page 50115 "Item Sales Forecast"
 
     local procedure PopulateTemporaryData()
     var
-        Item: Record Item;
-        RealVariant: Record "Item Variant";
-        HasVariants: Boolean;
+        TempFilterBackup: Record "Item Variant Sales Buffer" temporary;
     begin
+        TempFilterBackup.CopyFilters(Rec);
+
         Rec.Reset();
         Rec.DeleteAll();
 
         if (this.ForecastSetup."Start Date" = 0D) or (this.ForecastSetup."End Date" = 0D) then
             exit;
 
-        if Item.FindSet() then
-            repeat
-                RealVariant.Reset();
-                RealVariant.SetRange("Item No.", Item."No.");
-                HasVariants := RealVariant.FindSet();
+        if this.ForecastSetup."Hide Zero Sales" then
+            this.PopulateSalesOnlyFromQuery()
+        else
+            this.PopulateAllItemsWithQuery();
 
-                if HasVariants then
-                    repeat
-                        this.InsertBufferRow(
-                            Item."No.",
-                            RealVariant.Code,
-                            Item.Description,
-                            this.ForecastSetup."Start Date",
-                            this.ForecastSetup."End Date"
-                        );
-                    until RealVariant.Next() = 0
-                else
-                    this.InsertBufferRow(
-                        Item."No.",
-                        '',
-                        Item.Description,
-                        this.ForecastSetup."Start Date",
-                        this.ForecastSetup."End Date"
-                    );
-            until Item.Next() = 0;
+        Rec.CopyFilters(TempFilterBackup);
 
         if Rec.FindFirst() then;
     end;
 
-    local procedure InsertBufferRow(
-        NewItemNo: Code[20];
-        NewVariantCode: Code[10];
-        NewItemDescription: Text[100];
-        StartDate: Date;
-        EndDate: Date
-    )
+    local procedure PopulateSalesOnlyFromQuery()
     var
-        ValueEntry: Record "Value Entry";
+        SalesQuery: Query "Item Variant Sales Query";
+        SoldQty: Decimal;
+    begin
+        SalesQuery.SetRange(PostingDate, this.ForecastSetup."Start Date", this.ForecastSetup."End Date");
+        SalesQuery.Open();
+
+        while SalesQuery.Read() do begin
+            SoldQty := SalesQuery.InvoicedQuantity * -1;
+            if SoldQty <> 0 then begin
+                Rec.Init();
+                Rec."Item No." := SalesQuery.ItemNo;
+                Rec."Variant Code" := SalesQuery.VariantCode;
+                Rec."Base Item Description" := SalesQuery.Description;
+                Rec."Quantity Last Year" := SoldQty;
+                Rec."Quantity Forecast" := this.CalculateForecast(SoldQty);
+                Rec.Insert();
+            end;
+        end;
+
+        SalesQuery.Close();
+    end;
+
+    local procedure PopulateAllItemsWithQuery()
+    var
+        Item: Record Item;
+        RealVariant: Record "Item Variant";
+        SalesQuery: Query "Item Variant Sales Query";
+        SoldQty: Decimal;
+    begin
+        Item.SetLoadFields("No.", Description);
+        RealVariant.SetLoadFields("Item No.", Code);
+
+        if Item.FindSet() then
+            repeat
+                RealVariant.SetRange("Item No.", Item."No.");
+                if RealVariant.FindSet() then
+                    repeat
+                        this.InsertEmptyBufferRow(Item."No.", RealVariant.Code, Item.Description);
+                    until RealVariant.Next() = 0
+                else
+                    this.InsertEmptyBufferRow(Item."No.", '', Item.Description);
+            until Item.Next() = 0;
+
+        SalesQuery.SetRange(PostingDate, this.ForecastSetup."Start Date", this.ForecastSetup."End Date");
+        SalesQuery.Open();
+
+        while SalesQuery.Read() do begin
+            SoldQty := SalesQuery.InvoicedQuantity * -1;
+            if (SoldQty <> 0) and Rec.Get(SalesQuery.ItemNo, SalesQuery.VariantCode) then begin
+                Rec."Quantity Last Year" := SoldQty;
+                Rec."Quantity Forecast" := this.CalculateForecast(SoldQty);
+                Rec.Modify();
+            end;
+        end;
+
+        SalesQuery.Close();
+    end;
+
+    local procedure InsertEmptyBufferRow(NewItemNo: Code[20]; NewVariantCode: Code[10]; NewItemDescription: Text[100])
     begin
         Rec.Init();
         Rec."Item No." := NewItemNo;
         Rec."Variant Code" := NewVariantCode;
         Rec."Base Item Description" := NewItemDescription;
-
-        ValueEntry.Reset();
-        ValueEntry.SetRange("Item No.", NewItemNo);
-        ValueEntry.SetRange("Variant Code", NewVariantCode);
-        ValueEntry.SetRange("Posting Date", StartDate, EndDate);
-        ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Sale);
-
-        if ValueEntry.CalcSums("Invoiced Quantity") then
-            Rec."Quantity Last Year" := ValueEntry."Invoiced Quantity" * -1;
-
-        if this.ForecastSetup."Forecast Divisor" <> 0 then
-            Rec."Quantity Forecast" := (3 * Rec."Quantity Last Year") / this.ForecastSetup."Forecast Divisor"
-        else
-            Rec."Quantity Forecast" := 0;
-
+        Rec."Quantity Last Year" := 0;
+        Rec."Quantity Forecast" := 0;
         Rec.Insert();
+    end;
+
+    local procedure CalculateForecast(SoldQty: Decimal): Decimal
+    begin
+        if this.ForecastSetup."Forecast Divisor" <> 0 then
+            exit((3 * SoldQty) / this.ForecastSetup."Forecast Divisor");
+        exit(0);
     end;
 }

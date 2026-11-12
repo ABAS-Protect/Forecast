@@ -21,6 +21,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Forecast Divisor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1145636371 - Field 2963476758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hide Zero Sales</source>
+          <target>Göm nollförsäljning</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Hide Zero Sales - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1145636371 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <target>Primärnyckel</target>
@@ -111,6 +117,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Forecast Divisor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 2963476758 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether items and variants with zero sales in the selected period are hidden.</source>
+          <target>Anger huruvida artiklar och varianter med nollförsäljning under perioden är gömda.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Hide Zero Sales - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 2963476758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hide Zero Sales</source>
+          <target>Göm nollförsäljning</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Hide Zero Sales - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2608201074 - Control 474480784 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the start date of the historical sales period.</source>
           <target>Anger startdatum på säljperioden.</target>
@@ -158,6 +176,12 @@
           <target>Anger variantkoden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control VariantCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Query 3157487116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Variant Sales Query</source>
+          <target>Förfrågan för försäljningsartiklar och -varianter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query Item Variant Sales Query - Property Caption</note>
         </trans-unit>
       </group>
     </body>

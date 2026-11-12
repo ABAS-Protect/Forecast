@@ -32,6 +32,11 @@ table 50111 "Item Forecast Setup"
         {
             Caption = 'End Date';
         }
+        field(5; "Hide Zero Sales"; Boolean)
+        {
+            Caption = 'Hide Zero Sales';
+            InitValue = true;
+        }
     }
 
     keys
