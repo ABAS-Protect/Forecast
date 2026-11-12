@@ -27,7 +27,7 @@ table 50110 "Item Variant Sales Buffer"
         }
         field(4; "Quantity Last Year"; Decimal)
         {
-            Caption = 'Quantity Last Year';
+            Caption = 'Quantity Sold';
         }
         field(5; "Quantity Forecast"; Decimal)
         {

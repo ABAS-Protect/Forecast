@@ -24,6 +24,14 @@ table 50111 "Item Forecast Setup"
             Caption = 'Forecast Parameter';
             MinValue = 0.00001;
         }
+        field(3; "Start Date"; Date)
+        {
+            Caption = 'Start Date';
+        }
+        field(4; "End Date"; Date)
+        {
+            Caption = 'End Date';
+        }
     }
 
     keys

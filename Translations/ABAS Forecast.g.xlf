@@ -8,6 +8,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1145636371 - Field 2649176925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field End Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1145636371 - Field 4284544769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forecast Parameter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17,6 +22,11 @@
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1145636371 - Field 474480784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Item Forecast Setup - Field Start Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3068141294 - Field 2377754522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Description</source>
@@ -34,7 +44,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Quantity Forecast - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3068141294 - Field 4024651138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quantity Last Year</source>
+          <source>Quantity Sold</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Item Variant Sales Buffer - Field Quantity Last Year - Property Caption</note>
         </trans-unit>
@@ -48,6 +58,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2608201074 - NamedType 2317798710" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date cannot be later than End Date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - NamedType DateRangeErrorMsg</note>
+        </trans-unit>
         <trans-unit id="Page 2608201074 - NamedType 1738636964" size-unit="char" translate="yes" xml:space="preserve">
           <source>The parameter must be greater than zero.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -58,6 +73,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control GeneralConfiguration - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 2649176925 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the end date of the historical sales period.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control End Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 2649176925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control End Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2608201074 - Control 4284544769 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The permanent base value used in calculations: 3 * (Sales Last Year) / parameter.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -67,6 +92,16 @@
           <source>Forecast parameter</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Forecast Divisor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 474480784 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the start date of the historical sales period.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Start Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 474480784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control Start Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2608201074 - Control 285721170 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the description of the base item.</source>
@@ -84,9 +119,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control QuantityForecast - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2608201074 - Control 1384966386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the total quantity sold for this variant last year.</source>
+          <source>Specifies the total quantity sold for this variant during the selected period.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control QuantityLastYear - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2608201074 - Control 1384966386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity Sold</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Item Sales Forecast - Control QuantityLastYear - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2608201074 - Control 3798681774 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the variant code.</source>

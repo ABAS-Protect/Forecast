@@ -42,9 +42,30 @@ page 50115 "Item Sales Forecast"
                             Error(this.ParameterErrorMsg);
 
                         this.ForecastSetup.Modify();
-
                         this.PopulateTemporaryData();
                         CurrPage.Update(false);
+                    end;
+                }
+                field("Start Date"; this.ForecastSetup."Start Date")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Start Date';
+                    ToolTip = 'Specifies the start date of the historical sales period.';
+
+                    trigger OnValidate()
+                    begin
+                        this.ValidateDatesAndRefresh();
+                    end;
+                }
+                field("End Date"; this.ForecastSetup."End Date")
+                {
+                    ApplicationArea = All;
+                    Caption = 'End Date';
+                    ToolTip = 'Specifies the end date of the historical sales period.';
+
+                    trigger OnValidate()
+                    begin
+                        this.ValidateDatesAndRefresh();
                     end;
                 }
             }
@@ -72,7 +93,8 @@ page 50115 "Item Sales Forecast"
                 {
                     ApplicationArea = All;
                     DecimalPlaces = 0;
-                    ToolTip = 'Specifies the total quantity sold for this variant last year.';
+                    Caption = 'Quantity Sold';
+                    ToolTip = 'Specifies the total quantity sold for this variant during the selected period.';
                 }
                 field(QuantityForecast; Rec."Quantity Forecast")
                 {
@@ -103,32 +125,53 @@ page 50115 "Item Sales Forecast"
     var
         ForecastSetup: Record "Item Forecast Setup";
         ParameterErrorMsg: Label 'The parameter must be greater than zero.';
+        DateRangeErrorMsg: Label 'Start Date cannot be later than End Date.';
 
     local procedure GetOrCreateSetupRecord()
+    var
+        CurrentYear: Integer;
     begin
+        CurrentYear := Date2DMY(WorkDate(), 3);
+
         if not this.ForecastSetup.Get() then begin
             this.ForecastSetup.Init();
             this.ForecastSetup."Primary Key" := '';
             this.ForecastSetup."Forecast Divisor" := 11;
+            this.ForecastSetup."Start Date" := DMY2Date(1, 1, CurrentYear - 1);
+            this.ForecastSetup."End Date" := DMY2Date(31, 12, CurrentYear - 1);
             this.ForecastSetup.Insert();
-        end;
+        end else
+            if (this.ForecastSetup."Start Date" = 0D) or (this.ForecastSetup."End Date" = 0D) then begin
+                if this.ForecastSetup."Start Date" = 0D then
+                    this.ForecastSetup."Start Date" := DMY2Date(1, 1, CurrentYear - 1);
+                if this.ForecastSetup."End Date" = 0D then
+                    this.ForecastSetup."End Date" := DMY2Date(31, 12, CurrentYear - 1);
+                this.ForecastSetup.Modify();
+            end;
+    end;
+
+    local procedure ValidateDatesAndRefresh()
+    begin
+        if (this.ForecastSetup."Start Date" <> 0D) and (this.ForecastSetup."End Date" <> 0D) then
+            if this.ForecastSetup."Start Date" > this.ForecastSetup."End Date" then
+                Error(this.DateRangeErrorMsg);
+
+        this.ForecastSetup.Modify();
+        this.PopulateTemporaryData();
+        CurrPage.Update(false);
     end;
 
     local procedure PopulateTemporaryData()
     var
         Item: Record Item;
         RealVariant: Record "Item Variant";
-        StartDate: Date;
-        EndDate: Date;
-        CurrentYear: Integer;
         HasVariants: Boolean;
     begin
-        CurrentYear := Date2DMY(WorkDate(), 3);
-        StartDate := DMY2Date(1, 1, CurrentYear - 1);
-        EndDate := DMY2Date(31, 12, CurrentYear - 1);
-
         Rec.Reset();
         Rec.DeleteAll();
+
+        if (this.ForecastSetup."Start Date" = 0D) or (this.ForecastSetup."End Date" = 0D) then
+            exit;
 
         if Item.FindSet() then
             repeat
@@ -138,10 +181,22 @@ page 50115 "Item Sales Forecast"
 
                 if HasVariants then
                     repeat
-                        this.InsertBufferRow(Item."No.", RealVariant.Code, Item.Description, StartDate, EndDate);
+                        this.InsertBufferRow(
+                            Item."No.",
+                            RealVariant.Code,
+                            Item.Description,
+                            this.ForecastSetup."Start Date",
+                            this.ForecastSetup."End Date"
+                        );
                     until RealVariant.Next() = 0
                 else
-                    this.InsertBufferRow(Item."No.", '', Item.Description, StartDate, EndDate);
+                    this.InsertBufferRow(
+                        Item."No.",
+                        '',
+                        Item.Description,
+                        this.ForecastSetup."Start Date",
+                        this.ForecastSetup."End Date"
+                    );
             until Item.Next() = 0;
 
         if Rec.FindFirst() then;
